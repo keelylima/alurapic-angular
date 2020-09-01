@@ -1,3 +1,1 @@
-<app-photo url="https://abrilmdemulher.files.wordpress.com/2017/08/rocambole-de-morango.jpg?quality=90&strip=info&w=654&h=436&crop=1" description="Rocambole"></app-photo>
-
-<app-photo url="https://www.receitasnestle.com.br/images/default-source/recipes/brigadeiro_alta.jpg" description="brigadeiro"></app-photo>
+<app-photo *ngFor="let photo of photos" [url]="photo.url" [description]="photo.description"></app-photo>

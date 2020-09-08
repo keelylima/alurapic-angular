@@ -1,6 +1,9 @@
+<p class="text-center text-muted" *ngIf="!photosDoPhotos.length">
+  Sorry, no photos
+</p>
 <ol class="list-unstyled row">
   <li *ngFor="let cols of rows" class="row">
-    <div *ngFor="let photo of cols" class="col-4">
+    <div *ngFor="let photo of cols" class="col">
       <ap-photo [url]="photo.url" [description]="photo.description">
       </ap-photo>
     </div>

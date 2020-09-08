@@ -4,3 +4,5 @@
   </form>
 </div>
 <ap-photos [photosDoPhotos]="photosBack | filterByDescription: filter"></ap-photos>
+
+<ap-load-button (click)="load()" [hasMore]="hasMoreList"></ap-load-button>

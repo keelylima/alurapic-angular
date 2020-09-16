@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 const API_URL = 'http://localhost:3000';
 
@@ -10,9 +11,20 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   authenticate(userName: string, password: string) {
-    return this.http.post(API_URL + '/user/login', {
-      userName: userName,
-      password: password,
-    });
+    return this.http
+      .post(
+        API_URL + '/user/login',
+        {
+          userName: userName,
+          password: password,
+        },
+        { observe: 'response' }
+      )
+      .pipe(
+        map((res) => {
+          const authToken = res.headers.get('x-access-token');
+          console.log(authToken);
+        })
+      );
   }
 }

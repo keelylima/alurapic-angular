@@ -25,7 +25,6 @@ export class AuthService {
         map((res) => {
           const authToken = res.headers.get('x-access-token');
           this.tokenService.setToken(authToken);
-          console.log(authToken);
         })
       );
   }

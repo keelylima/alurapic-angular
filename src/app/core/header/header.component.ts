@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user/user.service';
 import { User } from '../user/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ap-header',
@@ -11,7 +12,14 @@ import { User } from '../user/user';
 export class HeaderComponent {
   user$: Observable<User>;
 
-  constructor(userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.user$ = userService.getUser();
+  }
+
+  logout() {
+    this.userService.logout();
+
+    //rota para login é uma string em branco, rota principal
+    this.router.navigate(['']);
   }
 }

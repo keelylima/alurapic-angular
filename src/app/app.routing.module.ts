@@ -1,3 +1,4 @@
+import { SignupComponent } from './home/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -13,6 +14,10 @@ const routes: Routes = [
     path: '',
     component: SignInComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
   },
   {
     path: 'user/:user',

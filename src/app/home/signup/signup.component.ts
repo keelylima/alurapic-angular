@@ -2,6 +2,9 @@ import { UserNotTakenValidatorService } from './user-not-taken.validator.service
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
+import { NewUser } from './new-user';
+import { SignupService } from './signup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +16,9 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userNotTakenValidatorService: UserNotTakenValidatorService
+    private userNotTakenValidatorService: UserNotTakenValidatorService,
+    private signUpService: SignupService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -49,5 +54,16 @@ export class SignupComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  signUp() {
+    // me passa um objeto com os valores de cada campo de formulário que criei
+    const newUser = this.signUpForm.getRawValue() as NewUser;
+    this.signUpService.signUp(newUser).subscribe(() => {
+      this.router.navigate(['']);
+    }),
+      (err) => {
+        console.log(err);
+      };
   }
 }

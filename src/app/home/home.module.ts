@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing.module';
+import { SignupService } from './signup/signup.service';
+import { UserNotTakenValidatorService } from './signup/user-not-taken.validator.service';
 
 @NgModule({
   declarations: [SignInComponent, SignupComponent, HomeComponent],
@@ -18,5 +20,6 @@ import { HomeRoutingModule } from './home.routing.module';
     RouterModule,
     HomeRoutingModule,
   ],
+  providers: [SignupService, UserNotTakenValidatorService],
 })
 export class HomeModule {}
